@@ -1,28 +1,39 @@
-#pragma once
+#ifndef CHUNK_H
+#define CHUNK_H
 
 #include "map_writings.h"
 
-#include "player.h"
+#include "team_manager.h"
 
-class Chunk : public MapWritings {
+class Chunk : public ChunkWritings {
 public:
 	virtual ~Chunk() = default;
 
-	virtual void change_team(Player* p) noexcept {};
+	virtual void set_team(const char* name) {}
 
 	virtual bool has_team() noexcept {
 		return false;
 	}
 
-	const inline float get_modified_movement() const noexcept {
+	inline const int get_modified_movement() const noexcept {
 		return modifyMovement;
 	}
 
-	const inline char get_drawing() const noexcept {
+	inline const char get_drawing() const noexcept {
 		return (char)type;
 	}
 
-	const inline char* get_color() const noexcept {
+	inline const char* get_color() const noexcept {
 		return color;
 	}
+
+	inline const bool is_visible() const noexcept {
+		return isVisible;
+	}
+
+	inline void switch_visible() noexcept {
+		if (isVisible) isVisible = false;
+		else isVisible = true;
+	}
 };
+#endif

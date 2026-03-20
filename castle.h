@@ -1,24 +1,22 @@
-#pragma once
+#ifndef CASTLE_H
+#define CASTLE_H
 
 #include "chunk.h"
 
-#include "team.h"
-
 class Castle : public Chunk {
-	Player* team;
 	bool hasTeam = false;
 
+	Team* team;
+
 public:
-	Castle() : team(nullptr) {
-		type = MapWritings::CASTLE;
-		modifyMovement = 0.0f;
+	Castle() : team(Team::get_singleton()) {
+		type = ChunkWritings::CASTLE;
+		modifyMovement = 0;
 		color = ColorWritings::WHITE;
 	}
 
-	void change_team(Player* p) noexcept override {
-		team = p;
-
-		color = p->get_team_color();
+	void set_team(const char* name) override {
+		color = team->get_team_color("one");
 
 		hasTeam = true;
 	}
@@ -27,3 +25,4 @@ public:
 		return hasTeam;
 	}
 };
+#endif

@@ -1,12 +1,14 @@
-#pragma once
+#ifndef MOUNTAIN_H
+#define MOUNTAIN_H
 
 #include "chunk.h"
 
 class Mountain : public Chunk {
 public:
 	Mountain() {
-		type = MapWritings::MOUNTAIN;
-		modifyMovement = -1.5f;
+		type = ChunkWritings::MOUNTAIN;
+		modifyMovement = -2;
 		color = ColorWritings::GRAY;
 	}
 };
+#endif

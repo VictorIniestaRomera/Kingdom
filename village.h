@@ -1,22 +1,22 @@
-#pragma once
+#ifndef VILLAGE_H
+#define VILLAGE_H
 
 #include "chunk.h"
 
 class Village : public Chunk {
-	Player* team;
 	bool hasTeam = false;
+	
+	Team* team;
 
 public:
-	Village() : team(nullptr) {
-		type = MapWritings::VILLAGE;
-		modifyMovement = 0.0f;
+	Village() : team(Team::get_singleton()) {
+		type = ChunkWritings::VILLAGE;
+		modifyMovement = 0;
 		color = ColorWritings::WHITE;
 	}
 
-	void change_team(Player* p) noexcept override {
-		team = p;
-
-		color = p->get_team_color();
+	void set_team(const char* name) noexcept override {
+		color = team->get_team_color("one");
 
 		hasTeam = true;
 	}
@@ -25,3 +25,4 @@ public:
 		return hasTeam;
 	}
 };
+#endif
