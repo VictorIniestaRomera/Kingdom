@@ -1,6 +1,9 @@
-#pragma once
+#ifndef CORE_H
+#define CORE_H
 
 #include <iostream>
+
+#include "log_writer.h"
 
 #include "core_exception.h"
 
@@ -49,8 +52,8 @@ namespace util {
 				return arr[index];
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
-
+				LogWriter::log(e->what());
+				
 				delete e;
 
 				return NULL;
@@ -64,7 +67,7 @@ namespace util {
 				return *index;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 
@@ -98,7 +101,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -129,7 +132,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -159,7 +162,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -189,7 +192,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -227,7 +230,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -262,7 +265,7 @@ namespace util {
 				delete save;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -311,7 +314,7 @@ namespace util {
 				lockLength = pos;
 			}
 			catch (const CoreException* e) {
-				std::cerr << e->what() << std::endl;
+				LogWriter::log(e->what());
 
 				delete e;
 			}
@@ -381,3 +384,5 @@ inline void operator>>(std::istream& in, util::Core<T>* cor) {
 
 	cor->push_back(add);
 }
+
+#endif

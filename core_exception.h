@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CORE_EXCEPTION_H
+#define CORE_EXCEPTION_H
 
 #include "exception.h"
 
@@ -8,7 +9,7 @@ class CoreException : public Exception {
 public:
 	CoreException(const int code) : code(code) {}
 
-	~CoreException() {};
+	~CoreException() {}
 
 	inline const char* what() const noexcept override {
 		const char* txt;
@@ -20,3 +21,4 @@ public:
 		return txt;
 	}
 };
+#endif
