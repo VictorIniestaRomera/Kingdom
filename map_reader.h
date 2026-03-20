@@ -1,7 +1,9 @@
-#pragma once
+#ifndef MAP_READER_H
+#define MAP_READER_H
 
 #include <fstream>
-#include <iostream>
+
+#include "log_writer.h"
 
 #include "map_reader_exception.h"
 #include "core.h"
@@ -9,7 +11,7 @@
 class MapReader {
 	static MapReader* manager;
 
-	std::string path;
+	const char* path;
 
 public:
 	static MapReader* get_singleton() {
@@ -18,8 +20,13 @@ public:
 		return manager;
 	}
 
-	inline void set_path(std::string p) {
+	inline void set_path(const char* p) {
 		path = p;
+
+		std::string txt = "Map loaded path: ";
+		txt += p;
+
+		LogWriter::log(txt.c_str());
 	}
 
 	inline util::Core<char> read() {
@@ -41,7 +48,7 @@ public:
 			paper.close();
 		}
 		catch (const MapReaderException* e) {
-			std::cerr << e->what() << std::endl;
+			LogWriter::log(e->what());
 
 			delete e;
 
@@ -53,3 +60,5 @@ public:
 };
 
 MapReader* MapReader::manager = nullptr;
+
+#endif

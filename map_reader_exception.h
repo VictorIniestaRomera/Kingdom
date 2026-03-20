@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MAP_READER_EXCEPTION_H
+#define MAP_READER_EXCEPTION_H
 
 #include "exception.h"
 
@@ -8,7 +9,7 @@ class MapReaderException : public Exception {
 public:
 	MapReaderException(const int code) : code(code) {}
 
-	~MapReaderException() {};
+	~MapReaderException() {}
 
 	inline const char* what() const noexcept override {
 		const char* txt;
@@ -20,3 +21,4 @@ public:
 		return txt;
 	}
 };
+#endif

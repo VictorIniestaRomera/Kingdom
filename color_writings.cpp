@@ -16,6 +16,6 @@ const char* ColorWritings::TEAM_1 = "\033[97m";
 
 const char* ColorWritings::TEAM_2 = "\033[95m";
 
-const char* ColorWritings::TEAM_3 = "\033[93m";
+const char* ColorWritings::TEAM_3 = "\033[33m";
 
 const char* ColorWritings::TEAM_4 = "\033[91m";

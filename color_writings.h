@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COLOR_WRITINGS_H
+#define COLOR_WRITINGS_H
 
 struct ColorWritings {
 	static const char* BLACK;
@@ -13,3 +14,4 @@ struct ColorWritings {
 	static const char* TEAM_3;
 	static const char* TEAM_4;
 };
+#endif
