@@ -5,6 +5,8 @@
 
 #include "msg.h"
 
+#include "computer_info.h"
+
 using std::cerr;
 using std::cout;
 using std::endl;
@@ -203,7 +205,7 @@ int main() {
         return ERROR;
     }
 
-    if (!bind_socket(IP, connect)) {
+    if (!bind_socket(COMPUTER_IP, connect)) {
         system("pause");
 
         return ERROR;
