@@ -203,7 +203,7 @@ int main() {
         return ERROR;
     }
 
-    if (!bind_socket("192.168.56.1", connect)) {
+    if (!bind_socket(IP, connect)) {
         system("pause");
 
         return ERROR;
