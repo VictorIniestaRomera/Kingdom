@@ -15,6 +15,10 @@ public:
 		return false;
 	}
 
+	virtual const char* get_team() const {
+		return "NoTeam";
+	}
+
 	inline const int get_modified_movement() const noexcept {
 		return modifyMovement;
 	}

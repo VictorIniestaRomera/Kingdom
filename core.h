@@ -271,6 +271,70 @@ namespace util {
 			}
 		}
 
+		inline void replace(const int pos, const T item) {
+			try {
+				if (pos < 0 || pos >= length) throw(new CoreException(1));
+
+				const int len = size();
+				T* save = new T[len];
+
+				for (int i = 0; i < len; i++) {
+					if (i != pos) save[i] = arr[i];
+					else save[i] = item;
+				}
+
+				delete arr;
+
+				arr = new T[len];
+				int count = 0;
+
+				for (int i = 0; i < len; i++) {
+					arr[count] = save[i];
+
+					count++;
+				}
+
+				delete save;
+			}
+			catch (const CoreException* e) {
+				LogWriter::log(e->what());
+
+				delete e;
+			}
+		}
+
+		inline void replace(const iterator index, const T item) {
+			try {
+				if (index < begin() || index >= end()) throw(new CoreException(1));
+
+				const int len = size();
+				T* save = new T[len];
+
+				for (int i = 0; i < len; i++) {
+					if (i != *index) save[i] = arr[i];
+					else save[i] = item;
+				}
+
+				delete arr;
+
+				arr = new T[len];
+				int count = 0;
+
+				for (int i = 0; i < len; i++) {
+					arr[count] = save[i];
+
+					count++;
+				}
+
+				delete save;
+			}
+			catch (const CoreException* e) {
+				LogWriter::log(e->what());
+
+				delete e;
+			}
+		}
+
 		inline void clear() noexcept {
 			delete arr;
 

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EXCEPTION_H
+#define EXCEPTION_H
 
 class Exception {
 protected:
@@ -6,3 +7,4 @@ protected:
 
 	inline virtual const char* what() const noexcept = 0;
 };
+#endif

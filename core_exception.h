@@ -15,7 +15,7 @@ public:
 		const char* txt;
 
 		if (code == 1) txt = "Index out of bounds!";
-		else if (code == 2) txt = "Max size has ben locked!";
+		else if (code == 2) txt = "Max size has been locked!";
 		else txt = "Unknown core exception!";
 
 		return txt;

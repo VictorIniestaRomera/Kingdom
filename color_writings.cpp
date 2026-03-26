@@ -12,10 +12,10 @@ const char* ColorWritings::BLUE = "\033[34m";
 
 const char* ColorWritings::GRAY = "\033[90m";
 
-const char* ColorWritings::TEAM_1 = "\033[97m";
+const char* ColorWritings::TEAM_1 = "\033[91m";
 
 const char* ColorWritings::TEAM_2 = "\033[95m";
 
 const char* ColorWritings::TEAM_3 = "\033[33m";
 
-const char* ColorWritings::TEAM_4 = "\033[91m";
+const char* ColorWritings::TEAM_4 = "\033[97m";

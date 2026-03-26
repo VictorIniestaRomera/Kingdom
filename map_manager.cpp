@@ -128,13 +128,23 @@ void Map::draw_map() noexcept {
 	std::cout << std::endl;
 }
 
-void Map::add_entity(const EntityWritings::Drawing& type, const char* name, const util::Point2& pos) {
+void Map::spawn_entity(const EntityWritings::Drawing& type, const char* teamName, const util::Point2& pos) {
 	const Chunk* c = map.at(pos.y)->at(pos.x);
 	ChunkWritings::Drawing spawnPlace;
 
 	if (type == EntityWritings::BUILDER || type == EntityWritings::WOODS_MAN) spawnPlace = ChunkWritings::VILLAGE;
 	else spawnPlace = ChunkWritings::CHUNK_ERROR;
 
-	if (c->get_drawing() == spawnPlace) entityManager->add_entity(type, name, pos);
+	if (c->get_drawing() == spawnPlace) entityManager->add_entity(type, teamName, pos);
+	else LogWriter::log("Entity placement invalid!");
+}
+
+void Map::build_building(const ChunkWritings::Drawing& type, const char* teamName, const util::Point2& pos) {
+	ChunkWritings::Drawing spawnPlace = ChunkWritings::PLAIN;
+
+	if (map.at(pos.y)->at(pos.x)->get_drawing() == spawnPlace) {
+		if (type == ChunkWritings::VILLAGE) map.at(pos.y)->replace(pos.x, new Village(teamName));
+		else if (type == ChunkWritings::CONTROL_POINT) map.at(pos.y)->replace(pos.x, new ControlPoint(teamName));
+	}
 	else LogWriter::log("Entity placement invalid!");
 }

@@ -15,14 +15,25 @@ public:
 		color = ColorWritings::WHITE;
 	}
 
-	void set_team(const char* name) noexcept override {
-		color = team->get_team_color("one");
+	ControlPoint(const char* name) : team(Team::get_singleton()) {
+		type = ChunkWritings::CONTROL_POINT;
+		modifyMovement = 0;
+
+		set_team(name);
+	}
+
+	inline void set_team(const char* name) noexcept override {
+		color = team->get_color();
 
 		hasTeam = true;
 	}
 
-	bool has_team() noexcept override {
+	inline bool has_team() noexcept override {
 		return hasTeam;
+	}
+
+	inline const char* get_team() const override {
+		return team->get_name();
 	}
 };
 #endif

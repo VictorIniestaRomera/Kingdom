@@ -1,4 +1,5 @@
-#pragma once
+#ifndef K_MATH_H
+#define K_MATH_H
 
 namespace util {
 	class Math {
@@ -30,3 +31,4 @@ namespace util {
 		}
 	};
 }
+#endif

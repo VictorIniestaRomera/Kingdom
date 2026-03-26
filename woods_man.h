@@ -12,7 +12,7 @@ public:
 		speed = 1;
 		pos = p;
 
-		color = team->get_team_color("one");
+		color = team->get_color();
 	}
 };
 #endif

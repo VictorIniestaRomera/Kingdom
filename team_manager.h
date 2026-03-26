@@ -24,7 +24,7 @@ struct TeamData {
 };
 
 class Team {
-	util::Core<TeamData*> teamList;
+	util::Core<TeamData*> teamList;	//This will be in the server
 
 	static Team* manager;
 
@@ -70,7 +70,7 @@ public:
 		else LogWriter::log("Team limit reached!");
 	}
 
-	inline TeamData* get_team(const char* name) noexcept {
+	inline TeamData* get_data(const char* name) noexcept {
 		try {
 			int pos = get_pos(name);
 
@@ -87,38 +87,12 @@ public:
 		}
 	}
 
-	inline const char* get_team_color(const char* name) const noexcept {
-		try {
-			int pos = get_pos(name);
-
-			if (pos == -1) throw(new TeamException(1));
-
-			return teamList.at(pos)->teamColor;
-		}
-		catch (const TeamException* e) {
-			LogWriter::log(e->what());
-
-			delete e;
-
-			return ColorWritings::RED;
-		}
+	inline const char* get_color() const noexcept {
+		return teamList.at(0)->teamColor;	//Change when server is done
 	}
 
-	inline const char* get_team_name(const char* name) const noexcept {
-		try {
-			int pos = get_pos(name);
-
-			if (pos == -1) throw(new TeamException(1));
-
-			return teamList.at(pos)->teamName;
-		}
-		catch (const TeamException* e) {
-			LogWriter::log(e->what());
-
-			delete e;
-
-			return "Unknown";
-		}
+	inline const char* get_name() const noexcept {
+		return teamList.at(0)->teamName;	//Change when server is done
 	}
 };
 

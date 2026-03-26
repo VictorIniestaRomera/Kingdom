@@ -1,12 +1,14 @@
-#pragma once
+#ifndef FOREST_H
+#define FOREST_H
 
 #include "chunk.h"
 
 class Forest : public Chunk {
 public:
 	Forest() {
-		type = MapWritings::FOREST;
-		modifyMovement = -0.5f;
+		type = ChunkWritings::FOREST;
+		modifyMovement = -1;
 		color = ColorWritings::GREEN;
 	}
 };
+#endif
